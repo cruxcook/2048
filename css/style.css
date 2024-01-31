@@ -1,1 +1,147 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+* {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  height: 100vh;
+  background-color: rgb(250, 248, 240);
+  color: rgb(117, 110, 102);
+}
+
+.game-container {
+  width: 22em;
+  height: 22em;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 columns */
+  grid-template-rows: repeat(4, 1fr); /* 4 rows */
+  width: 95%; /* 100% will make it out of game-container and get hidden */
+  height: 95%; /* 100% will make it out of game-container and get hidden */
+  border: 3px solid rgb(185, 173, 161);
+  border-radius: 5px;
+}
+
+.tile {
+  width: calc(100%); /* Adjust width to accommodate borders */
+  height: calc(100%); /* Adjust height to accommodate borders */
+  border: 3px solid rgb(185, 173, 161);
+  box-sizing: border-box; /* Include border in width and height calculation */
+  background-color: rgb(202, 193, 181);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2em;
+  font-weight: 500;
+}
+
+.score-container{
+  width: 320px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.tile[data-value="2"]{
+  background-color: #EEE4DA;
+}
+
+.tile[data-value="4"]{
+  background-color: #EDE0C8;
+}
+
+.tile[data-value="8"]{
+  background-color: #F2B179;
+}
+
+.tile[data-value="16"]{
+  background-color: #F59563;
+}
+
+.tile[data-value="32"]{
+  background-color: #F67C5F;
+}
+
+.tile[data-value="64"]{
+  background-color: #F65E3B;
+}
+
+.tile[data-value="128"]{
+  background-color: #EDCF72;
+}
+
+.tile[data-value="256"]{
+  background-color: #EDCC61;
+}
+
+.tile[data-value="512"]{
+  background-color: #EDC850;
+}
+
+.tile[data-value="1024"]{
+  background-color: #EDC53F;
+}
+
+.tile[data-value="2048"]{
+  background-color: #EDC22E;
+}
+
+.tile[data-value="4096"]{
+  background-color: #a9a9a9;
+}
+
+#restart-btn{
+  margin-top: 15px;
+  padding: 10px 15px;
+  background-color: rgb(250, 248, 240);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#game-over{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  padding: 20px;
+  transform: translate(-50%, -50%);
+  background-color: rgba(140, 123, 104);
+  color: rgb(250, 248, 240);
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.grid-tile[data-value]{
+  transition: transform 0.2s, background-color 0.2s;
+}
+
+.new-tile{
+  animation: appear 0.3s;
+}
+
+@keyframes appear {
+  from{
+      opacity: 0;
+      transform: scale(0.5);
+  }
+  to{
+      opacity: 1;
+      transform: scale(1);
+  }
+}
